@@ -1,0 +1,7 @@
+{% extends "includes/page.html" %} {% block contents %}
+<ul style="list-style: circle">
+  {% for name in people() -%}
+    <li>{{name|capitalize|default("someone", true)}}</li>
+  {%- endfor %}
+</ul>
+{% endblock %}
