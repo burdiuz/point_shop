@@ -4,6 +4,9 @@ from flask import render_template
 
 app = Flask(__name__)
 
+# To run application execute:
+# flash run --debug
+
 name = "Vladyslav Olegovych"
 address = "Ukraine, Kyiv"
 people = ["oleg", "vladik", "davyd"]
