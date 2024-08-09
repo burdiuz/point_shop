@@ -32,6 +32,10 @@ def verb(verb, name):
 def api_contacts():
     return render_template("contacts.html", address=address, pageTitle="Our Contacts", title="Contact address")
 
+@app.route("/info")
+def api_info():
+    return render_template("info.html", pageTitle="Random information", title="Some information to be listed")
+
 @app.route("/noinfo")
 def api_noinfo():
     return render_template("noinfo.html")
