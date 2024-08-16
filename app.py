@@ -10,6 +10,7 @@ app = Flask(__name__)
 name = "Vladyslav Olegovych"
 address = "Ukraine, Kyiv"
 people = ["oleg", "vladik", "davyd"]
+age1 = 15
 
 
 getPeople = lambda: people
@@ -44,4 +45,7 @@ def api_noinfo():
 def api_people():
     return render_template("people.html", people=getPeople, pageTitle="Our People", title=render_template_string("People in our organsation ({{people()|length}})", people=getPeople))
 
+@app.route("/age")
+def api_age():
+    return render_template("age.html", age=age1, pageTitle="age", title="main developer's age is")
 
