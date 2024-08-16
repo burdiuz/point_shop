@@ -1,7 +1,22 @@
 {% extends "includes/page.html" %} {% block contents %}
 <ul style="list-style: circle">
-  {% for name in people() -%}
-    <li>{{name|capitalize|default("someone", true)}}</li>
-  {%- endfor %}
+  <script>
+    let people = fetch("/api/people");
+    people
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        const list = document.querySelector("ul");
+
+        data.forEach((name) => {
+          const item = document.createElement("li");
+          item.innerText = name;
+          item.style.textTransform = "capitalize";
+
+          list.appendChild(item);
+        });
+      });
+  </script>
 </ul>
 {% endblock %}
