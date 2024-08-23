@@ -1,6 +1,7 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask import render_template_string
 from flask import render_template
+import requests
 
 app = Flask(__name__)
 
@@ -52,6 +53,10 @@ def page_people():
 def page_age():
     return render_template("age.html", age=age, pageTitle="age", title="main developer's age is")
 
+@app.route("/nasa/sbdb")
+def page_nasa_sbdb():
+    return render_template("nasa/sbdb.html", pageTitle="Nasa SBDB Query", title="Search in Small-Body Database")
+
 # --- API ENDPOINTS
 
 @app.route("/api/people")
@@ -61,3 +66,13 @@ def api_people():
 @app.route("/api/address")
 def api_address():
     return jsonify(getAddress())
+
+
+@app.route("/api/nasa/sbdb")
+def api_nasa_sbdb():
+    searchTerm = request.args.get('sstr')
+    url = "https://ssd-api.jpl.nasa.gov/sbdb.api?sstr=" + searchTerm
+    
+    response = requests.get(url)
+
+    return response.json()

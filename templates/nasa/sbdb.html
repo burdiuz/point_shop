@@ -1,0 +1,38 @@
+{% extends "includes/page.html" %} {% block contents %}
+<div>
+  <div>
+    <input id="search-text" type="text" value="a*" />
+    <button onclick="searchSbdb()">Search</button>
+  </div>
+  <i>A single wildcard is allowed in search string.</i>
+  <div>
+    <ol></ol>
+  </div>
+</div>
+<script>
+  function searchSbdb() {
+    const searchTerm = document.querySelector("#search-text").value;
+
+    let result = fetch("/api/nasa/sbdb?sstr=" + searchTerm, {
+      mode: "cors",
+    });
+
+    result
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        const ol = document.querySelector('ol');
+
+        for (let index = 0; index < data.list.length; index++) {
+            const item = data.list[index];
+
+            const element = document.createElement('li');
+            element.innerText = item.name;
+
+            ol.appendChild(element);
+        }
+      });
+  }
+</script>
+{% endblock %}
