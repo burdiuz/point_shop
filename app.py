@@ -12,6 +12,7 @@ address = "Ukraine, Kyiv"
 people = ["oleg", "vladik", "davyd"]
 age = 100500
 
+getaddress = lambda: address
 
 getPeople = lambda: people
 
@@ -56,3 +57,7 @@ def page_age():
 @app.route("/api/people")
 def api_people():
     return getPeople()
+
+@app.route("/api/address")
+def api_address():
+    return getaddress()
