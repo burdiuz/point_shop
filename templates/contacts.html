@@ -8,9 +8,9 @@
       })
       .then((data) => {
         const adr = document.querySelector("address");
-        adr.innerText = address
+        adr.innerText = data;
       });
   </script>
     <p>My Address:</p>
-    <address>{{address}}</address>
+    <address></address>
 {% endblock %}
