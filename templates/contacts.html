@@ -1,5 +1,16 @@
 {% extends "includes/page.html" %}
 {% block contents %}
+<script>
+    let address = fetch("/api/address");
+    address
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        const adr = document.querySelector("address");
+        adr.innerText = data;
+      });
+  </script>
     <p>My Address:</p>
-    <address>{{address}}</address>
+    <address></address>
 {% endblock %}

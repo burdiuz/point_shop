@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask import render_template_string
 from flask import render_template
 
@@ -12,6 +12,7 @@ address = "Ukraine, Kyiv"
 people = ["oleg", "vladik", "davyd"]
 age = 100500
 
+getAddress = lambda: address
 
 getPeople = lambda: people
 
@@ -33,7 +34,7 @@ def verb(verb, name):
 
 @app.route("/contacts")
 def page_contacts():
-    return render_template("contacts.html", address=address, pageTitle="Our Contacts", title="Contact address")
+    return render_template("contacts.html", pageTitle="Our Contacts", title="Contact address")
 
 @app.route("/info")
 def page_info():
@@ -56,3 +57,7 @@ def page_age():
 @app.route("/api/people")
 def api_people():
     return getPeople()
+
+@app.route("/api/address")
+def api_address():
+    return jsonify(getAddress())
