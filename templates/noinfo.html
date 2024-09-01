@@ -1,2 +1,96 @@
-{% extends "includes/page.html" %}
+{% extends "includes/page.html" %} {% block contents %}
+<div class="container-fluid">
+  <span style="color: #f00; font-weight: bold">Span content</span>
+  <div><button class="btn btn-primary btn-sm">one</button></div>
+  <button class="btn btn-secondary btn-lg">two</button>
+  <button class="btn btn-success">three</button>
+  <button class="btn btn-warning">four</button>
+  <button class="btn btn-danger">five</button>
+</div>
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <svg
+        class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
+        width="800"
+        height="400"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Placeholder: First slide"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <title>Placeholder</title>
+        <rect width="100%" height="100%" fill="#777"></rect>
+        <text x="50%" y="50%" fill="#555" dy=".3em">First slide</text>
+      </svg>
+    </div>
+    <div class="carousel-item">
+      <svg
+        class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
+        width="800"
+        height="400"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Placeholder: First slide"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <title>Placeholder</title>
+        <rect width="100%" height="100%" fill="#777"></rect>
+        <text x="50%" y="50%" fill="#555" dy=".3em">Second slide</text>
+      </svg>
+    </div>
+    <div class="carousel-item">
+      <svg
+        class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
+        width="800"
+        height="400"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Placeholder: First slide"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <title>Placeholder</title>
+        <rect width="100%" height="100%" fill="#777"></rect>
+        <text x="50%" y="50%" fill="#555" dy=".3em">Third slide</text>
+      </svg>
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
+<script>
+  document.querySelector(".btn-primary").addEventListener("click", function () {
+    document
+      .querySelector(".btn-secondary")
+      .addEventListener("click", function () {
+        console.log("Secondary button clicked!");
+      });
+
+    const fifthBtn = document.querySelector(".btn-danger");
+
+    fifthBtn.classList.remove("btn-danger");
+    fifthBtn.classList.add("btn-success");
+  });
+</script>
+
+{% endblock %}

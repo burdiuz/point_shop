@@ -43,7 +43,7 @@ def page_info():
 
 @app.route("/noinfo")
 def page_noinfo():
-    return render_template("noinfo.html")
+    return render_template("noinfo.html", pageTitle="Test page", title="Test page")
 
 @app.route("/people")
 def page_people():
