@@ -1,21 +1,22 @@
 from flask import Flask, jsonify, request
 from flask import render_template_string
 from flask import render_template
+from pymongo import MongoClient
 import requests
 
 app = Flask(__name__)
 
+client = MongoClient()
+db = client.point_shop
+
 # To run application execute:
-# flash run --debug
+# flask run --debug
 
 name = "Vladyslav Olegovych"
 address = "Ukraine, Kyiv"
-people = ["oleg", "vladik", "davyd"]
 age = 100500
 
 getAddress = lambda: address
-
-getPeople = lambda: people
 
 # ---- PAGES
 
@@ -61,7 +62,12 @@ def page_nasa_sbdb():
 
 @app.route("/api/people")
 def api_people():
-    return getPeople()
+    users = db.users
+    list = []
+    for user in users.find():
+        list.append(user['name'])
+
+    return list
 
 @app.route("/api/address")
 def api_address():
