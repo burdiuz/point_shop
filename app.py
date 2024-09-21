@@ -1,8 +1,12 @@
 from flask import Flask, jsonify, request
 from flask import render_template_string
 from flask import render_template
+<<<<<<< HEAD
 from pymongo import MongoClient
 import requests
+=======
+#import requests
+>>>>>>> 8011cc7 (changes in noinfo)
 
 app = Flask(__name__)
 
@@ -53,6 +57,10 @@ def page_people():
 @app.route("/age")
 def page_age():
     return render_template("age.html", age=age, pageTitle="age", title="main developer's age is")
+
+@app.route("/boots")
+def page_boots():
+    return render_template("boots.html",pageTitle="bootstrap test")
 
 @app.route("/nasa/sbdb")
 def page_nasa_sbdb():
