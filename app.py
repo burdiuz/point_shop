@@ -1,12 +1,8 @@
 from flask import Flask, jsonify, request
 from flask import render_template_string
 from flask import render_template
-<<<<<<< HEAD
 from pymongo import MongoClient
 import requests
-=======
-#import requests
->>>>>>> 8011cc7 (changes in noinfo)
 
 app = Flask(__name__)
 
